@@ -2,5 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
 }
+const imageConfig = {images: {
+  domains: [
+    'images.ctfassets.net'
+  ],
+},}
 
-module.exports = nextConfig
+module.exports = {
+  ...nextConfig,
+  ...imageConfig
+}

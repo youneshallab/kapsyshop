@@ -33,12 +33,14 @@ export default function Home() {
               It's a SuperPower
             </p>
             <br/>
+            <Link href="/products">
             <button className={'flex bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px]'+
             ' px-5 py-3 mt-4 rounded-3xl -translate-x-1/2 '+
             'left-1/2 relative items-center '.concat(themeFont.className)} >
-                <Link href="/products">Shop Now</Link> 
+                <div>Shop Now</div>
                 <AiOutlineArrowRight className='font-extrabold ml-2'/>
             </button>
+            </Link> 
         </div>
     </div>
     </>

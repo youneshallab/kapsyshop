@@ -5,14 +5,27 @@ import { useState, useEffect } from 'react'
 import ProductCard from '@/components/ProductCard'
 import { Signika_Negative } from '@next/font/google'
 import headerImg from "../../public/portrait.jpg"
-import Link from 'next/link'
 
 
 const themeFont = Signika_Negative({weight: ['600'],subsets: ['latin'] })
 
 function Products() {
-console.log("hi")
 const [data, setData] = useState<[]>([])
+const [cartCounter, setCartCounter] = useState(0)
+
+  
+const addItemsToCart = (product: any) => {
+  const existingCart = localStorage.getItem('cart');
+  console.log("existingCart",existingCart)
+  const cartItems = existingCart ? JSON.parse(existingCart) : [];
+  cartItems.push({
+      ...product,
+      quantity: 1,
+  });
+  const updatedCart = JSON.stringify(cartItems);
+  localStorage.setItem('cart', updatedCart);
+  setCartCounter(cartItems.length);
+}
 
 useEffect(()=>{
     let isFetched: boolean = true
@@ -24,13 +37,6 @@ useEffect(()=>{
         })
         .then((response:any) => {
             const sanitizedEntries = response.items.map((item:any)=>{
-                /*
-                const pics = item.fields.pictures.map((pic:any)=>{
-                    return {
-                         
-                    }
-                })
-                */
                 return {
                     ...item.fields,
                 }
@@ -44,10 +50,13 @@ useEffect(()=>{
     }  
 },[])
 
+useEffect(()=>{
+
+})
 const ProductCards = ():JSX.Element => {
     const productCards = data.map((product:any) => {
         return (
-                <ProductCard key={product.id} product={product}/>
+                <ProductCard key={product.id} product={product} addItemsToCart={addItemsToCart}/>
         )
     })
     return (
@@ -60,7 +69,7 @@ const ProductCards = ():JSX.Element => {
 
   return (
     <div className='w-full bg-white '>
-        <Header color="white"/>
+        <Header color="white" cartCounter={cartCounter}/>
         <div className='min-h-screen  flex flex-col flex-grow'>
             <div className=" z-40 h-[80vh] w-full rounded-b-[25%] border-b-8 border-blue-800 "
             style={{
@@ -70,8 +79,8 @@ const ProductCards = ():JSX.Element => {
             }}>
                 <div className='w-full h-full rounded-b-[24%]  bg-[#00000052] '>
                     <div className=' mx-24 max-w-2xl top-24 h-[40%] absolute flex flex-col '>
-                        <h3 className={'text-white text-3xl lg:text-5xl p-4 '.concat(themeFont.className)}>Le cuir artisanal à votre poignet</h3>
-                        <div className={'text-white p-4 lg:text-lg overflow-hidden flex-grow '.concat(themeFont.className)}>Des bracelets et portefeuilles en cuir de haute qualité, faits à la main par des artisans passionnés. Des pièces uniques, durables et élégantes, conçues pour durer dans le temps. Une collection intemporelle, disponible en différentes couleurs et styles pour répondre à toutes vos envies.
+                        <h3 className={'text-white text-2xl lg:text-5xl p-4 '.concat(themeFont.className)}>Le cuir artisanal à votre poignet</h3>
+                        <div className={'text-white p-2 lg:text-lg overflow-hidden flex-grow '.concat(themeFont.className)}>Des bracelets et portefeuilles en cuir de haute qualité, faits à la main par des artisans passionnés. Des pièces uniques, durables et élégantes, conçues pour durer dans le temps. Une collection intemporelle, disponible en différentes couleurs et styles pour répondre à toutes vos envies.
                         </div>
                     </div>
                 </div>

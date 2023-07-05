@@ -12,29 +12,67 @@ function Page() {
 
     const router = useRouter();
     const { id } = router.query;
-    const [product, setProduct] = useState()
+    const [product, setProduct] = useState<any>()
     const [productFound, setProductFound] = useState(false)
     const primaryColorRef = useRef<HTMLDivElement>(null)
     const secondaryColorRef = useRef<HTMLDivElement>(null)
+    const [counter, setCounter] = useState<number>(1)
+    const [cartCounter, setcartCounter] = useState<number>(0)
 
-
-useEffect(()=>{
-    contentfulClient.getEntries({
-        content_type: "product",
-        select: "fields",
-        'fields.id': id,
-    })
-    .then((entry:any) => {
-        setProduct(entry.items[0].fields)
-        setProductFound(true)
+    const addItemsToCart = () => {
+        const existingCart = localStorage.getItem('cart');
+        const cartItems = existingCart ? JSON.parse(existingCart) : [];
+        cartItems.push({
+            ...product,
+            quantity: counter,
+        });
+        const updatedCart = JSON.stringify(cartItems);
+        localStorage.setItem('cart', updatedCart);
+        setcartCounter(cartItems.length)
     }
-    )
-    .catch(console.error)
-},[])    
- 
+
+    const incrementCounter = () => {
+        setCounter(prev => prev + 1)
+    };
+
+    const decrementCounter = () => {
+        setCounter(prev => prev - 1)
+    };
+    
+    useEffect(()=>{
+        contentfulClient.getEntries({
+            content_type: "product",
+            select: "fields",
+            'fields.id': id,
+        })
+        .then((entry:any) => {
+            setProduct(entry.items[0].fields)
+            setProductFound(true)
+        }
+        )
+        .catch(console.error)
+    },[]) 
+
+    
+    if(productFound === true && product != undefined){
+        const primaryColorViewClass = `colorview${product['primaryColor'].split('#')['1']}`
+        primaryColorRef.current?.classList.add(primaryColorViewClass)
+        var pol = document.querySelectorAll(`.${primaryColorViewClass}`) as NodeListOf<HTMLDivElement> | null;
+        if(pol){
+        for (var i = 0; i < pol.length; i++) {
+            pol[i].style.backgroundColor = `#${product['primaryColor'].split('#')['1']}` 
+            }}
+        const secondaryColorViewClass = `colorview${product['secondaryColor'].split('#')['1']}`
+        secondaryColorRef.current?.classList.add(secondaryColorViewClass)
+        var pol2 = document.querySelectorAll(`.${secondaryColorViewClass}`) as NodeListOf<HTMLDivElement> | null;
+        if(pol2){
+        for (var i = 0; i < pol2.length; i++) {
+            pol2[i].style.backgroundColor = `#${product['secondaryColor'].split('#')['1']}` 
+            }}
+    }
   return (
     <>
-    <Header></Header>
+    <Header cartCounter={cartCounter} ></Header>
     <div className='flex w-full bg-white '>
         <div className='h-screen w-[55%] fixed overflow-hidden'>
             {product != undefined ? 
@@ -57,9 +95,9 @@ useEffect(()=>{
                     <div className={'   text-blue-900 text-3xl '+
                     ' text-bold w-full '.concat(themeFont.className)}>
                     {product['productName']}</div>
-                    <div className='flex '>
-                        <div ref={primaryColorRef} className={` z-20 w-8 h-8 rounded-2xl translate-x-1/2 bg-[#180f39]`}></div>
-                        <div ref={secondaryColorRef} className='bg-green-500 w-8 h-8 rounded-2xl '></div>
+                    <div className='flex items-center'>
+                        <div ref={primaryColorRef} className={` z-20 w-8 h-8 rounded-2xl translate-x-1/2 border-[1px] border-white `}></div>
+                        <div ref={secondaryColorRef} className=' w-7 h-7 rounded-2xl '></div>
                     </div>
                 </div>
                 <div className={' text-blue-900 text-xl'+
@@ -72,13 +110,16 @@ useEffect(()=>{
                     <div className='flex flex-row items-center justify-around h-12 mr-4 w-20
                         border-[1px] border-gray-400  rounded-3xl hover:border-blue-900
                         px-2 '>
-                        <button className=' px-1 rounded-3xl text-gray-400 hover:text-blue-900'>-</button>
-                        <div className=' text-center mx-1'>1</div>
-                        <button className=' px-1 rounded-3xl text-gray-400 hover:text-blue-900'>+</button>
+                        {counter.valueOf() > 1 ? <button onClick={decrementCounter} className=' px-1 rounded-3xl text-gray-400 hover:text-blue-900'>-</button>
+                        :<button disabled className=' px-1 rounded-3xl text-gray-400'>-</button>}
+                        <div className=' text-center mx-1'>{counter.valueOf()}</div>
+                        {counter.valueOf() < 10 ? <button onClick={incrementCounter} className=' px-1 rounded-3xl text-gray-400 hover:text-blue-900'>+</button>
+                        :<button disabled className=' px-1 rounded-3xl text-gray-400'>+</button>}
                     </div>
                     <button className={'z-30 flex animate-fade animate-slideup  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px]'+
                     ' px-5 py-3 h-12 w-64 rounded-3xl '+
-                    ' relative items-center text-center '.concat(themeFont.className)} >
+                    ' relative items-center text-center '.concat(themeFont.className)} 
+                        onClick={addItemsToCart}>
                         Add to Cart
                         <AiOutlineArrowRight className='font-extrabold ml-2'/>
                     </button>

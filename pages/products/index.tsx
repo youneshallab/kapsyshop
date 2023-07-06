@@ -14,18 +14,7 @@ const [data, setData] = useState<[]>([])
 const [cartCounter, setCartCounter] = useState(0)
 
   
-const addItemsToCart = (product: any) => {
-  const existingCart = localStorage.getItem('cart');
-  console.log("existingCart",existingCart)
-  const cartItems = existingCart ? JSON.parse(existingCart) : [];
-  cartItems.push({
-      ...product,
-      quantity: 1,
-  });
-  const updatedCart = JSON.stringify(cartItems);
-  localStorage.setItem('cart', updatedCart);
-  setCartCounter(cartItems.length);
-}
+
 
 useEffect(()=>{
     let isFetched: boolean = true
@@ -55,7 +44,7 @@ useEffect(()=>{
 const ProductCards = ():JSX.Element => {
     const productCards = data.map((product:any) => {
         return (
-                <ProductCard key={product.id} product={product} addItemsToCart={addItemsToCart}/>
+                <ProductCard key={product.id} product={product}/>
         )
     })
     return (

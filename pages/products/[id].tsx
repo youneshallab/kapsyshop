@@ -6,9 +6,14 @@ import Header from '@/components/Header';
 import Image from 'next/image';
 import { Signika_Negative } from '@next/font/google';
 import {AiOutlineArrowRight} from "react-icons/ai";
+import { useSelector, useDispatch } from 'react-redux'
+import { increment } from '@/redux/features/cartCounter';
+import { RootState } from '@/redux/store';
 
 const themeFont = Signika_Negative({weight: ['600'],subsets: ['latin'] })
 function Page() {
+
+    const dispatch = useDispatch()
 
     const router = useRouter();
     const { id } = router.query;
@@ -17,7 +22,6 @@ function Page() {
     const primaryColorRef = useRef<HTMLDivElement>(null)
     const secondaryColorRef = useRef<HTMLDivElement>(null)
     const [counter, setCounter] = useState<number>(1)
-    const [cartCounter, setcartCounter] = useState<number>(0)
 
     const addItemsToCart = () => {
         const existingCart = localStorage.getItem('cart');
@@ -28,7 +32,7 @@ function Page() {
         });
         const updatedCart = JSON.stringify(cartItems);
         localStorage.setItem('cart', updatedCart);
-        setcartCounter(cartItems.length)
+        dispatch(increment())
     }
 
     const incrementCounter = () => {
@@ -72,7 +76,7 @@ function Page() {
     }
   return (
     <>
-    <Header cartCounter={cartCounter} ></Header>
+    <Header></Header>
     <div className='flex w-full bg-white '>
         <div className='h-screen w-[55%] fixed overflow-hidden'>
             {product != undefined ? 
@@ -119,7 +123,7 @@ function Page() {
                     <button className={'z-30 flex animate-fade animate-slideup  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px]'+
                     ' px-5 py-3 h-12 w-64 rounded-3xl '+
                     ' relative items-center text-center '.concat(themeFont.className)} 
-                        onClick={addItemsToCart}>
+                        onClick={() => addItemsToCart()}>
                         Add to Cart
                         <AiOutlineArrowRight className='font-extrabold ml-2'/>
                     </button>

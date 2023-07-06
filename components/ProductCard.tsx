@@ -4,15 +4,18 @@ import { useState, useRef, useEffect } from 'react';
 import { Signika_Negative } from '@next/font/google'
 import {AiOutlineArrowRight} from "react-icons/ai"
 import Link from 'next/link';
+import {  useDispatch } from 'react-redux'
+import { increment } from '@/redux/features/cartCounter';
 
 const themeFont = Signika_Negative({weight: ['600'],subsets: ['latin'] })
 
-function ProductCard({product,addItemsToCart}:any) {
+function ProductCard({product}:any) {
 
   const primaryColorRef = useRef<HTMLDivElement>(null)
   const secondaryColorRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
   const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false)
+  const dispatch = useDispatch()
 
   useEffect(()=>{
     const primaryColorViewClass = `colorview${product.primaryColor.split('#')['1']}`
@@ -30,6 +33,18 @@ function ProductCard({product,addItemsToCart}:any) {
           pol2[i].style.backgroundColor = `#${product.secondaryColor.split('#')['1']}` 
         }}
   },[isHovered,isPageLoaded])
+
+  const addItemsToCart = (product: any) => {
+    const existingCart = localStorage.getItem('cart');
+    const cartItems = existingCart ? JSON.parse(existingCart) : [];
+    cartItems.push({
+        ...product,
+        quantity: 1,
+    });
+    const updatedCart = JSON.stringify(cartItems);
+    localStorage.setItem('cart', updatedCart);
+    dispatch(increment())
+  }
 
   const mouseOverHandle = () => {
     setIsHovered(true)
@@ -94,7 +109,7 @@ function ProductCard({product,addItemsToCart}:any) {
                 <button className={'z-30 flex animate-fade animate-slideup  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px]'+
                   ' px-5 py-3 h-12 rounded-3xl w-[80%] mb-4'+
                   ' relative items-center text-center '.concat(themeFont.className)} 
-                    onClick={()=>addItemsToCart(product)}>
+                    onClick={() => addItemsToCart(product)}>
                       Add to Cart
                       <AiOutlineArrowRight className='font-extrabold ml-2'/>
                 </button>

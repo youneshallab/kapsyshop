@@ -7,18 +7,19 @@ import { useState, useEffect } from 'react';
 const logoFont = Teko({weight: ['600'],subsets: ['latin'] })
 const themeFont = Signika_Negative({weight: ['600'],subsets: ['latin'] })
 
-function Header({color,cartCounter}:any) {
+
+  function Header({ color,cartCounter }:any) {
 
   const [headerColor, setHeaderColor] = useState(" text-blue-900 ")
   const [cartCount, setCartCount] = useState(cartCounter)
-
+    
   useEffect(()=>{
     if(color === "white"){
         setHeaderColor(" text-gray-200 ")
         }
     
   },[])
-
+  
   
   
   
@@ -72,5 +73,4 @@ function Header({color,cartCounter}:any) {
     </div>
   )
 }
-
 export default Header

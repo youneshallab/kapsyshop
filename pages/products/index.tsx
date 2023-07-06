@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '@/components/Header'
 import contentfulClient from '@/utils/contentful'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import ProductCard from '@/components/ProductCard'
 import { Signika_Negative } from '@next/font/google'
 import headerImg from "../../public/portrait.jpg"
@@ -50,9 +50,8 @@ useEffect(()=>{
     }  
 },[])
 
-useEffect(()=>{
 
-})
+
 const ProductCards = ():JSX.Element => {
     const productCards = data.map((product:any) => {
         return (
@@ -66,6 +65,7 @@ const ProductCards = ():JSX.Element => {
     )
 
 }
+
 
   return (
     <div className='w-full bg-white '>

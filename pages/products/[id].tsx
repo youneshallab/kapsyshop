@@ -6,9 +6,8 @@ import Header from '@/components/Header';
 import Image from 'next/image';
 import { Signika_Negative } from '@next/font/google';
 import {AiOutlineArrowRight} from "react-icons/ai";
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { increment } from '@/redux/features/cartCounter';
-import { RootState } from '@/redux/store';
 
 const themeFont = Signika_Negative({weight: ['600'],subsets: ['latin'] })
 function Page() {

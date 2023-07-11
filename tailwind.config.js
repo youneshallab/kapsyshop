@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      flexGrow: {
+        2: '2',
+        3: '3'
+      },
       animation: {
         fade: 'fadeOut 1s ease-in-out',
         slideup: 'slideUp 500ms ease-out',

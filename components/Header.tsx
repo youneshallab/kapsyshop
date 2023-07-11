@@ -50,7 +50,9 @@ function Header({ color }:any) {
                 </div>: <></>}
             </li>
             <li className={'list-none fixed text-blue-900 right-10 z-50 cursor-pointer '.concat(headerColor).concat(themeFont.className)}>
-                About
+                <Link href="/about">
+                    About
+                </Link>
             </li>
             <li className={'list-none fixed text-blue-900 right-24 z-50 cursor-pointer '.concat(headerColor).concat(themeFont.className)}>
                 <Link href="/products">

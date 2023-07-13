@@ -9,10 +9,12 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { increment } from '@/redux/features/cartCounter';
 import Layout from '@/components/Layout';
+import { AddToCart, ICartItemType } from '@/redux/slices/cart';
+import { useAppDispatch } from '@/redux/hooks';
 
 const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 function Page() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const router = useRouter();
   const { id } = router.query;
@@ -23,15 +25,18 @@ function Page() {
   const [counter, setCounter] = useState<number>(1);
 
   const addItemsToCart = () => {
-    const existingCart = localStorage.getItem('cart');
-    const cartItems = existingCart ? JSON.parse(existingCart) : [];
-    cartItems.push({
-      ...product,
-      quantity: counter,
-    });
-    const updatedCart = JSON.stringify(cartItems);
-    localStorage.setItem('cart', updatedCart);
-    dispatch(increment());
+    const item: Pick<
+      ICartItemType,
+      'id' | 'quantity' | 'name' | 'price' | 'image'
+    > = {
+      id: String(product.id),
+      name: product.productName,
+      quantity: 1,
+      price: 199,
+      image: `https:${product.pictures['0'].fields.file.url}`,
+    };
+
+    dispatch(AddToCart(item));
   };
 
   const incrementCounter = () => {
@@ -54,7 +59,7 @@ function Page() {
         setProductFound(true);
       })
       .catch(console.error);
-  }, []);
+  }, [id]);
 
   if (productFound === true && product != undefined) {
     const primaryColorViewClass = `colorview${

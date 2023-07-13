@@ -1,51 +1,74 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-interface ICartItemType {
+export interface ICartItemType {
   id: string;
   quantity: number;
-  title: string;
+  name: string;
   price: number;
+  image: string;
+  total: number;
 }
 
-const initialState: {
+let initialState: {
   items: ICartItemType[];
+  total: number;
 } = {
   items: [],
+  total: 0,
 };
+
+if (typeof window !== 'undefined') {
+  // Perform localStorage action
+  const cart = localStorage.getItem('cart');
+  if (cart) initialState = JSON.parse(cart);
+}
 
 export const AddToCart = createAsyncThunk(
   'cart.AddToCart',
-  async (item: ICartItemType, thunkAPI) => {
-    return {
-      item,
-    };
+  async (
+    item: Pick<ICartItemType, 'id' | 'quantity' | 'name' | 'price' | 'image'>,
+    thunkAPI
+  ) => {
+    return { item };
   }
 );
 
 export const cartSlice = createSlice({
   name: 'cart',
-  initialState: initialState,
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(AddToCart.fulfilled, (state, action) => {
       const exists = state.items.filter(
-        (item) => item.id === action.payload.item.id
+        (item: ICartItemType) => item.id === action.payload?.item.id
+      );
+      if (exists.length < 1) {
+        state.items.push({
+          ...action.payload?.item,
+          total: action.payload?.item.price * action.payload?.item.quantity,
+        });
+      } else {
+        const newQuantity = exists[0].quantity + 1;
+        const newItem = {
+          ...exists[0],
+          ...{
+            quantity: newQuantity,
+            total: newQuantity * exists[0].price,
+          },
+        };
+
+        state.items = [
+          ...state.items.map((item: ICartItemType) =>
+            item.id === newItem.id ? newItem : item
+          ),
+        ];
+      }
+      state.total = state.items.reduce(
+        (acc: number, value: ICartItemType) => (acc += value.total),
+        0
       );
 
-      if (!exists) {
-        state.items.push(action.payload.item);
-        return;
-      }
-
-      const newQuantity = exists[0].quantity++;
-      const newItem = {
-        ...exists[0],
-        quantity: newQuantity,
-        price: exists[0].price + action.payload.item.price,
-      };
-
-      state.items.map((item) => (item.id === newItem.id ? newItem : item));
-      return;
+      localStorage.setItem('cart', JSON.stringify(state));
     });
   },
 });

@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import React from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { Signika_Negative } from '@next/font/google';
-import bgImg from '../public/bgimg.jpg';
+import bgImg from '../public/pxfuel.jpg';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 
@@ -30,7 +30,7 @@ export default function Home() {
             }}
           ></div>
           <Header color="blue-900" />
-          <div className="absolute top-0 left-0 h-screen w-full">
+          <div className=" top-0 left-0 h-screen w-full">
             <div className="top-1/4 left-1/2 relative -translate-x-1/2 w-fit">
               <p
                 className={'text-center text-6xl text-blue-900 '.concat(

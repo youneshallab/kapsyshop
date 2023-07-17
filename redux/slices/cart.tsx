@@ -17,18 +17,14 @@ let initialState: {
   total: 0,
 };
 
-if (typeof window !== 'undefined') {
-  // Perform localStorage action
-  const cart = localStorage.getItem('cart');
-  if (cart) initialState = JSON.parse(cart);
-}
+export const initCart = createAsyncThunk(
+  'cart.initCart',
+  async (cache: any) => cache
+);
 
 export const AddToCart = createAsyncThunk(
   'cart.AddToCart',
-  async (
-    item: Pick<ICartItemType, 'id' | 'quantity' | 'name' | 'price' | 'image'>,
-    thunkAPI
-  ) => {
+  async (item: Omit<ICartItemType, 'total'>, thunkAPI) => {
     return { item };
   }
 );
@@ -69,7 +65,11 @@ export const cartSlice = createSlice({
       );
 
       localStorage.setItem('cart', JSON.stringify(state));
-    });
+    }),
+      builder.addCase(initCart.fulfilled, (state, action) => {
+        state.items = action.payload.items;
+        state.total = action.payload.total;
+      });
   },
 });
 

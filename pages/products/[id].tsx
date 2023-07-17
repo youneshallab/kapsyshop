@@ -25,10 +25,7 @@ function Page() {
   const [counter, setCounter] = useState<number>(1);
 
   const addItemsToCart = () => {
-    const item: Pick<
-      ICartItemType,
-      'id' | 'quantity' | 'name' | 'price' | 'image'
-    > = {
+    const item: Omit<ICartItemType, 'total'> = {
       id: String(product.id),
       name: product.productName,
       quantity: 1,

@@ -50,10 +50,7 @@ function ProductCard({ product }: any) {
   }, [isHovered, isPageLoaded, product]);
 
   const addItemsToCart = (product: any) => {
-    const item: Pick<
-      ICartItemType,
-      'id' | 'quantity' | 'name' | 'price' | 'image'
-    > = {
+    const item: Omit<ICartItemType, 'total'> = {
       id: String(product.id),
       name: product.productName,
       quantity: 1,

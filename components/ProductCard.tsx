@@ -14,7 +14,6 @@ function ProductCard({ product }: any) {
   const primaryColorRef = useRef<HTMLDivElement>(null);
   const secondaryColorRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const cart = useAppSelector((store) => store.cart);
 
@@ -47,13 +46,10 @@ function ProductCard({ product }: any) {
         }`;
       }
     }
-  }, [isPageLoaded, isHovered]);
+  }, [isHovered, product]);
 
   const addItemsToCart = (product: any) => {
-    const item: Pick<
-    ICartItemType,
-    'id' | 'quantity' | 'name' | 'price' | 'image'
-    > = {
+    const item: Omit<ICartItemType, 'total'> = {
       id: String(product.id),
       name: product.productName,
       quantity: 1,
@@ -104,8 +100,6 @@ function ProductCard({ product }: any) {
   const mouseLeaveHandle = () => {
     setIsHovered(false);
   };
-
-
 
   return (
     <div

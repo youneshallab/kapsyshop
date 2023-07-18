@@ -17,18 +17,14 @@ let initialState: {
   total: 0,
 };
 
-if (typeof window !== 'undefined') {
-  // Perform localStorage action
-  const cart = localStorage.getItem('cart');
-  if (cart) initialState = JSON.parse(cart);
-}
+export const initCart = createAsyncThunk(
+  'cart.initCart',
+  async (cache: any) => cache
+);
 
 export const AddToCart = createAsyncThunk(
   'cart.AddToCart',
-  async (
-    item: Pick<ICartItemType, 'id' | 'quantity' | 'name' | 'price' | 'image'>,
-    thunkAPI
-  ) => {
+  async (item: Omit<ICartItemType, 'total'>, thunkAPI) => {
     return { item };
   }
 );
@@ -41,15 +37,16 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(AddToCart.fulfilled, (state, action) => {
       const exists = state.items.filter(
-        (item: ICartItemType) => item.id === action.payload?.item.id
+        (item: ICartItemType) => item.id === action.payload.item.id
       );
       if (exists.length < 1) {
-        /*
-        state.items.push({
-          ...action.payload?.item,
-          total: action.payload?.item.price * action.payload?.item.quantity,
-        });
-        */
+        state.items = [
+          ...state.items,
+          {
+            ...action.payload?.item,
+            total: action.payload?.item.price * action.payload?.item.quantity,
+          },
+        ];
       } else {
         
         const newQuantity = exists[0].quantity + 1;
@@ -60,14 +57,14 @@ export const cartSlice = createSlice({
             total: newQuantity * exists[0].price,
           },
         };
-        /*
+        
         state.items = [
           ...state.items.map((item: ICartItemType) =>
             item.id === newItem.id ? newItem : item
           ),
 
         ];
-        */
+        
       }
       state.total = state.items.reduce(
         (acc: number, value: ICartItemType) => (acc += value.total),
@@ -75,7 +72,11 @@ export const cartSlice = createSlice({
       );
 
       localStorage.setItem('cart', JSON.stringify(state));
-    });
+    }),
+      builder.addCase(initCart.fulfilled, (state, action) => {
+        state.items = action.payload.items;
+        state.total = action.payload.total;
+      });
   },
   
 });

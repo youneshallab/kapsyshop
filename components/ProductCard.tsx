@@ -14,7 +14,6 @@ function ProductCard({ product }: any) {
   const primaryColorRef = useRef<HTMLDivElement>(null);
   const secondaryColorRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const cart = useAppSelector((store) => store.cart);
 
@@ -47,7 +46,7 @@ function ProductCard({ product }: any) {
         }`;
       }
     }
-  }, [isHovered, isPageLoaded, product]);
+  }, [isHovered, product]);
 
   const addItemsToCart = (product: any) => {
     const item: Omit<ICartItemType, 'total'> = {
@@ -102,10 +101,6 @@ function ProductCard({ product }: any) {
   const mouseLeaveHandle = () => {
     setIsHovered(false);
   };
-
-  useEffect(() => {
-    setIsPageLoaded(true);
-  }, []);
 
   return (
     <div

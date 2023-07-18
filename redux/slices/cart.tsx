@@ -36,13 +36,16 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(AddToCart.fulfilled, (state, action) => {
       const exists = state.items.filter(
-        (item: ICartItemType) => item.id === action.payload?.item.id
+        (item: ICartItemType) => item.id === action.payload.item.id
       );
       if (exists.length < 1) {
-        state.items.push({
-          ...action.payload?.item,
-          total: action.payload?.item.price * action.payload?.item.quantity,
-        });
+        state.items = [
+          ...state.items,
+          {
+            ...action.payload?.item,
+            total: action.payload?.item.price * action.payload?.item.quantity,
+          },
+        ];
       } else {
         const newQuantity = exists[0].quantity + 1;
         const newItem = {

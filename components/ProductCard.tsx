@@ -15,7 +15,6 @@ function ProductCard({ product }: any) {
   const secondaryColorRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((store) => store.cart);
 
   useEffect(() => {
     const primaryColorViewClass = `colorview${

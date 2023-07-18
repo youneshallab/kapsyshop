@@ -33,7 +33,7 @@ function ProductCard({ product }: any) {
         }`;
       }
     }
-    const secondaryColorViewClass = `colorview${
+  const secondaryColorViewClass = `colorview${
       product.secondaryColor.split('#')['1']
     }`;
     secondaryColorRef.current?.classList.add(secondaryColorViewClass);
@@ -47,12 +47,12 @@ function ProductCard({ product }: any) {
         }`;
       }
     }
-  }, [isHovered, isPageLoaded, product]);
+  }, [isPageLoaded, isHovered]);
 
   const addItemsToCart = (product: any) => {
     const item: Pick<
-      ICartItemType,
-      'id' | 'quantity' | 'name' | 'price' | 'image'
+    ICartItemType,
+    'id' | 'quantity' | 'name' | 'price' | 'image'
     > = {
       id: String(product.id),
       name: product.productName,
@@ -60,7 +60,6 @@ function ProductCard({ product }: any) {
       price: 199,
       image: `https:${product.pictures['0'].fields.file.url}`,
     };
-
     dispatch(AddToCart(item));
   };
 
@@ -106,9 +105,7 @@ function ProductCard({ product }: any) {
     setIsHovered(false);
   };
 
-  useEffect(() => {
-    setIsPageLoaded(true);
-  }, []);
+
 
   return (
     <div

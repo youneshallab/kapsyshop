@@ -34,6 +34,7 @@ export const AddToCart = createAsyncThunk(
 );
 
 export const cartSlice = createSlice({
+  
   name: 'cart',
   initialState,
   reducers: {},
@@ -43,11 +44,14 @@ export const cartSlice = createSlice({
         (item: ICartItemType) => item.id === action.payload?.item.id
       );
       if (exists.length < 1) {
+        /*
         state.items.push({
           ...action.payload?.item,
           total: action.payload?.item.price * action.payload?.item.quantity,
         });
+        */
       } else {
+        
         const newQuantity = exists[0].quantity + 1;
         const newItem = {
           ...exists[0],
@@ -56,12 +60,14 @@ export const cartSlice = createSlice({
             total: newQuantity * exists[0].price,
           },
         };
-
+        /*
         state.items = [
           ...state.items.map((item: ICartItemType) =>
             item.id === newItem.id ? newItem : item
           ),
+
         ];
+        */
       }
       state.total = state.items.reduce(
         (acc: number, value: ICartItemType) => (acc += value.total),
@@ -71,6 +77,7 @@ export const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state));
     });
   },
+  
 });
 
 export const cartReducer = cartSlice.reducer;

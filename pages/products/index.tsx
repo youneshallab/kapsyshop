@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import contentfulClient from '@/utils/contentful';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '@/components/ProductCard';
 import { Signika_Negative } from '@next/font/google';
 import headerImg from '../../public/portrait.jpg';
@@ -11,7 +11,6 @@ const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 
 function Products() {
   const [data, setData] = useState<[]>([]);
-  const [cartCounter, setCartCounter] = useState(0);
 
   useEffect(() => {
     let isFetched: boolean = true;
@@ -49,7 +48,7 @@ function Products() {
   return (
     <Layout>
       <div className="w-full bg-white ">
-        <Header color="white" cartCounter={cartCounter} />
+        <Header color="white" />
         <div className="min-h-screen  flex flex-col flex-grow">
           <div
             className=" z-40 h-[80vh] w-full rounded-b-[25%] border-b-8 border-blue-800 "

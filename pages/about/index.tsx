@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '@/components/Layout'
 import { Signika_Negative } from '@next/font/google';
 import Link from 'next/link';
+import {FaChevronRight} from 'react-icons/fa';
 
 const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
@@ -11,13 +12,16 @@ function About() {
     <div>
         <Layout>
           <div className= 'top-0 left-0 h-min w-full grid grid-cols-12 pt-48'>
-            <div className='col-start-3 col-end-7 h-screen flex flex-col gap-2'>
-              <p className={'text-[40px] font-bold text-blue-900  '.concat(themeFontBold.className)}>About</p>
-              <Link href="/contactus" className={'text-[32px] font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Contact Us</Link>
-              <Link href="/privacy" className={'text-[32px] font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Privacy</Link>
-              <Link href="/terms" className={'text-[32px] font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Terms of Use</Link>
-              <Link href="/shipping" className={'text-[32px] font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Shipping and Return</Link>
-              <Link href="/payment" className={'text-[32px] font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Payment Policies</Link>
+            <div className='col-start-3 col-end-7 h-screen flex flex-col gap-1'>
+              <div className={'text-[32px] h-12  font-bold text-blue-900 flex gap-2 items-center '.concat(themeFontBold.className)}>
+                <FaChevronRight></FaChevronRight>
+                <p>About</p>
+              </div>
+              <Link href="/contactus" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Contact Us</Link>
+              <Link href="/privacy" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Privacy</Link>
+              <Link href="/terms" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Terms of Use</Link>
+              <Link href="/shipping" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Shipping and Return</Link>
+              <Link href="/payment" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Payment Policies</Link>
             </div>
             <div className='col-start-7 col-end-12 '>
               <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>

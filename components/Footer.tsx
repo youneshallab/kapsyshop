@@ -5,6 +5,10 @@ import { Fade } from 'react-slideshow-image';
 import is1 from '../public/is1.jpg'
 import is2 from '../public/is2.jpg'
 import is3 from '../public/is3.jpg'
+import { Signika_Negative } from '@next/font/google';
+
+const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
+const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
 
 function Footer() {
     const properties = {
@@ -46,29 +50,64 @@ function Footer() {
                     </div>
                 </Link>
                 <div>
-                    <span className='text-white'>Brand</span>
-                    <ul className='mt-4'>
-                        <li className='text-white font-bold text-lg leading-none mt-2'>Bracelets</li>
-                        <li className='text-white font-bold text-lg leading-none mt-2'>Contact Us</li>
-                        <li className='text-white font-bold text-lg leading-none mt-2'>About</li>
+                    <span className={'text-white '.concat(themeFont.className)}>Brand</span>
+                    <ul className='mt-2 w-32 flex flex-col gap-2'>
+                        <li>
+                            <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
+                            href="\products" >
+                                <p>Products</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
+                            href="\contactus" >
+                                <p>Contact Us</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
+                            href="\about" >
+                                <p>About</p>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div>
-                    <span className='text-white'>Info</span>
-                    <ul className='mt-2 w-32'>
-                        <li className='text-white font-bold text-lg leading-none mt-2'>Privacy</li>
-                        <li className='text-white font-bold text-lg leading-none mt-2'>Terms of Use</li>
-                        <li className='text-white font-bold text-lg leading-none mt-2'>Shipping and Returns</li>
-                        <li className='text-white font-bold text-lg leading-none mt-2'>Payment Policies</li>
+                    <span className= {'text-white '.concat(themeFont.className)}>Info</span>
+                    <ul className='mt-2 w-32 flex flex-col gap-2'>
+                        <li>
+                            <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
+                            href="\privacy" >
+                                <p>Privacy</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
+                            href="\terms" >
+                                Terms of Use
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={'text-white font-bold text-xl leading-3 mt-3 '.concat(themeFontBold.className)} 
+                            href="\shipping" >
+                                Shipping and Returns
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={'text-white font-bold text-xl leading-3 mt-3 '.concat(themeFontBold.className)} 
+                            href="\payment" >
+                                Payment Policies
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
 
             <div className='row-start-4 row-end-6 border-t-[1px] border-white px-10 flex justify-between items-end py-6'>
-                <div className='text-white text-sm'>Made by <Link className='font-bold underline' href="">Minjara Studio</Link></div>
+                <div className={'text-white text-sm '.concat(themeFont.className)}>Made by <Link className='font-bold underline' href="">Minjara Studio</Link></div>
                 <div className='text-white w-80 mx-24'>
                     <form>
-                        <label className='flex flex-col'>
+                        <label className={'flex flex-col '.concat(themeFont.className)}>
                         <span className='mb-1'>Subscribe to Newsletter</span>
                         <div className='flex border-b-2 border-white  '>
                             <input style={{ backgroundColor: '#1E3A8A' }} className=" grow px-1 pb-[1px] outline-none 

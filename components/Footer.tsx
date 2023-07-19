@@ -29,7 +29,7 @@ function Footer() {
       ];
 
   return (
-    <div className='h-screen w full flex flex-col'>
+    <div className='h-screen w full flex flex-col bg-white'>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#1E3A8A" fillOpacity="1" d="M0,224L80,240C160,256,320,288,480,266.7C640,245,800,171,960,165.3C1120,160,1280,224,1360,256L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
         <div className='bg-blue-900  w-full flex-grow grid grid-rows-5'>
             <div className='row-start-1 row-end-4 flex items-start justify-around px-40 '>

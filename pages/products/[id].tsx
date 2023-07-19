@@ -2,12 +2,9 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import contentfulClient from '@/utils/contentful';
 import { useState, useRef } from 'react';
-import Header from '@/components/Header';
 import Image from 'next/image';
 import { Signika_Negative } from '@next/font/google';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import { useDispatch } from 'react-redux';
-import { increment } from '@/redux/features/cartCounter';
 import Layout from '@/components/Layout';
 import { AddToCart, ICartItemType } from '@/redux/slices/cart';
 import { useAppDispatch } from '@/redux/hooks';
@@ -90,22 +87,24 @@ function Page() {
   }
   return (
     <Layout>
-      <>
-        <div className="flex w-full bg-white ">
-          <div className="h-screen w-[55%] fixed overflow-hidden">
-            {product != undefined ? (
-              <Image
+        <div className="grid grid-cols-12 w-full  relative">
+          <div className="h-screen relative overflow-hidden col-start-1 col-end-7">
+            <div className='fixed top-0 left-0 h-screen w-1/2 bg-white overflow-hidden -z-10 flex items-center justify-center'>
+             
+              {product != undefined ? (
+                <Image
                 src={`https:${product['pictures']['0']['fields']['file']['url']}`}
                 width={1500}
                 height={1800}
-                alt="Picture of the author"
-              />
-            ) : (
-              <></>
-            )}
+                alt=""
+                />
+                ) : (
+                  <></>
+                  )}
+                
+            </div>
           </div>
-          <div className="h-screen w-[55%] "></div>
-          <div className="pt-20 pl-12 pr-40 bg-white relative max-w-[45%] ">
+          <div className="pt-20 pl-12 pr-40 bg-white relative col-start-7 col-end-13 ">
             {product != undefined ? (
               <div className=" h-full mb-24">
                 <div
@@ -212,7 +211,6 @@ function Page() {
             )}
           </div>
         </div>
-      </>
     </Layout>
   );
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import Layout from '@/components/Layout'
 import { Signika_Negative } from '@next/font/google';
 import Link from 'next/link';
+import {FaWhatsappSquare,FaEnvelopeSquare} from 'react-icons/fa'
+
 
 const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
@@ -21,14 +23,28 @@ function Privacy() {
             </div>
             <div className='col-start-7 col-end-12 '>
               <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
+              <section>
+                  <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Payment on Delivery</h2>
+                  <p>At Kapsy, we believe in convenience and trust. Therefore, our primary payment method is "Payment on Delivery." You can pay for your order in cash at the time of delivery.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Bank Transfer in Special Cases</h2>
+                  <p>In very rare cases where hand delivery is not possible, or if you wish to ship the product directly to the recipient as a gift, we can accept payments via bank transfer. To request bank transfer payment, please contact us via email or WhatsApp to get the necessary details for the bank transfer process.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Contact Us for Bank Transfer Details</h2>
+                  <p>If you require bank transfer payment details, please feel free to reach out to us via:</p>
+                  <Link href="mailto:kapsyshop@gmail.com" target='_blank' className='flex gap-2 items-center hover:text-red-500'>
+                    <FaEnvelopeSquare></FaEnvelopeSquare>
+                    <p>Email: kapsyshop@gmail.com</p>
+                  </Link>
+                  <Link href="https://wa.me/212655778278" target='_blank' className='flex gap-2 items-center hover:text-green-600'>
+                    <FaWhatsappSquare></FaWhatsappSquare>
+                    <p>WhatsApp: +212 6 55 77 88 99</p>
+                  </Link>
+              </section>
               </p>
           </div>
           </div>

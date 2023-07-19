@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '@/components/Layout'
 import { Signika_Negative } from '@next/font/google';
 import Link from 'next/link';
+import {FaWhatsappSquare,FaEnvelopeSquare} from 'react-icons/fa'
 
 const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
@@ -21,14 +22,59 @@ function Terms() {
             </div>
             <div className='col-start-7 col-end-12 '>
               <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
+              <section>
+                  <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Introduction</h2>
+                  <p>Welcome to Kapsy! By accessing or using our website, you agree to comply with these Terms of Use. If you do not agree with any part of these terms, please refrain from using our website.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Intellectual Property</h2>
+                  <p>The content on this website, including but not limited to text, images, graphics, logos, and software, is the intellectual property of Kapsy and is protected by applicable copyright and trademark laws. You may not use, reproduce, or distribute any content from this website without obtaining proper authorization from Kapsy.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Use of Website</h2>
+                  <p>You agree to use this website only for lawful purposes and in a manner that does not infringe upon the rights of others or restrict or inhibit their use and enjoyment of the website. Prohibited activities include, but are not limited to:</p>
+                  <ul>
+                      <li>Uploading or transmitting any unlawful, harmful, or offensive content</li>
+                      <li>Impersonating any individual or entity</li>
+                      <li>Engaging in any activity that could harm, disable, or impair the website</li>
+                      <li>Attempting to gain unauthorized access to any part of the website or its server</li>
+                  </ul>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Third-Party Links</h2>
+                  <p>Our website may contain links to third-party websites. These links are provided for your convenience and do not signify our endorsement of the content on these sites. Kapsy is not responsible for the content or practices of any third-party websites. We encourage you to review the terms and privacy policies of these sites before using them.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Limitation of Liability</h2>
+                  <p>Kapsy will not be liable for any direct, indirect, incidental, consequential, or special damages arising out of or in connection with your use of this website or any linked sites. We do not guarantee the accuracy, completeness, or reliability of any content on this website.</p>
+              </section>
+
+              <section>
+                  <h2  className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Indemnification</h2>
+                  <p>You agree to indemnify and hold harmless Kapsy and its affiliates, officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, or expenses (including attorneys' fees) arising out of your use of the website or any violation of these Terms of Use.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Changes to Terms</h2>
+                  <p>Kapsy reserves the right to update or modify these Terms of Use at any time without prior notice. It is your responsibility to review these terms periodically. Continued use of the website after any changes will signify your acceptance of the revised terms.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Contact Us</h2>
+                  <p>If you have any questions or concerns regarding these Terms of Use, please don't hesitate to contact us at:</p>
+                  <Link href="mailto:kapsyshop@gmail.com" target='_blank' className='flex gap-2 items-center hover:text-red-500'>
+                    <FaEnvelopeSquare></FaEnvelopeSquare>
+                    <p>Email: kapsyshop@gmail.com</p>
+                  </Link>
+                  <Link href="https://wa.me/212655778278" target='_blank' className='flex gap-2 items-center hover:text-green-600'>
+                    <FaWhatsappSquare></FaWhatsappSquare>
+                    <p>WhatsApp: +212 6 55 77 88 99</p>
+                  </Link>
+              </section>
               </p>
           </div>
           </div>

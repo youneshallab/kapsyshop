@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '@/components/Layout'
 import { Signika_Negative } from '@next/font/google';
 import Link from 'next/link';
+import {FaWhatsappSquare,FaInstagramSquare,FaFacebookSquare,FaEnvelopeSquare} from 'react-icons/fa'
 
 const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
@@ -21,14 +22,40 @@ function ContactUs() {
             </div>
             <div className='col-start-7 col-end-12 '>
               <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
+              <section>
+                  <h2  className={'text-2xl  mb-1  '.concat(themeFontBold.className)}>Kapsy’s Customer Care Team</h2>
+                  <p>Kapsy’s Customer Care team would be happy to assist you with your online order. Contact us for product and buying questions, delivery inquiries, returns and exchanges. We are available every day, from 8 am to 6 pm.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Contact Information</h2>
+                  <Link href="mailto:kapsyshop@gmail.com" target='_blank' className='flex gap-2 items-center hover:text-red-500'>
+                    <FaEnvelopeSquare></FaEnvelopeSquare>
+                    <p>Email: kapsyshop@gmail.com</p>
+                  </Link>
+                  <Link href="https://wa.me/212655778278" target='_blank' className='flex gap-2 items-center hover:text-green-600'>
+                    <FaWhatsappSquare></FaWhatsappSquare>
+                    <p>WhatsApp: +212 6 55 77 88 99</p>
+                  </Link>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Follow Us on Social Media</h2>
+                  <ul>
+                      <li>
+                        <Link className='flex gap-2 items-center hover:text-purple-500' href="https://www.instagram.com/kapsy_shop" target='_blank'>
+                          <FaInstagramSquare></FaInstagramSquare>
+                          <p className=''>Instagram</p>
+                        </Link>
+                      </li>
+                      <li >
+                        <Link className='flex gap-2 items-center hover:text-sky-600' href="https://www.facebook.com/kapsy_shop" target='_blank'>
+                          <FaFacebookSquare></FaFacebookSquare>
+                          <p>Facebook</p>
+                        </Link>
+                      </li>
+                  </ul>
+              </section>
               </p>
           </div>
           </div>

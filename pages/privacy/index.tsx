@@ -2,6 +2,8 @@ import React from 'react'
 import Layout from '@/components/Layout'
 import { Signika_Negative } from '@next/font/google';
 import Link from 'next/link';
+import {FaWhatsappSquare,FaEnvelopeSquare} from 'react-icons/fa'
+
 
 const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
@@ -21,14 +23,73 @@ function Privacy() {
             </div>
             <div className='col-start-7 col-end-12 '>
               <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse leo tortor, commodo ut arcu ac, aliquam fermentum augue. Cras lorem lacus, suscipit sit amet neque eget, pulvinar tincidunt magna. In volutpat dignissim urna, in finibus nibh mollis ac. Nam efficitur varius sodales. Vestibulum orci sem, posuere sed fringilla vitae, tincidunt vel leo. Aenean venenatis ante diam, vel elementum dui volutpat sed. Nam sit amet elementum neque.
-Sed lobortis fermentum mauris, sit amet convallis purus porta quis. Curabitur eu leo consectetur, iaculis mauris non, mollis ante. Cras ante ante, ultricies vitae nibh a, congue cursus turpis. Integer non libero sit amet dui viverra tempus. Aenean augue lectus, interdum quis maximus elementum, molestie nec nulla. Integer iaculis pretium odio a blandit. Praesent interdum, felis et finibus malesuada, risus ipsum dictum lectus, sed euismod lacus velit a nibh. Proin interdum velit et lacus tristique dignissim. Quisque non quam nulla. Vestibulum tellus lorem, consequat in faucibus nec, suscipit nec dui. Vestibulum sagittis pharetra sem, accumsan mattis nisl gravida in. Phasellus ut erat auctor dui mollis facilisis eget ac nisi. Proin vitae diam faucibus, venenatis odio sed, ornare dolor.
+              <section>
+                  <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Introduction</h2>
+                  <p>Welcome to Kapsy! This Privacy Policy outlines how we collect, use, and protect your personal information when you use our website and make purchases from us. By accessing or using our website, you agree to the terms of this Privacy Policy.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Information We Collect</h2>
+                  <p>When you make a purchase on Kapsy, we may collect the following personal information:</p>
+                  <ul>
+                      <li>First name</li>
+                      <li>Last name</li>
+                      <li>Phone number</li>
+                      <li>Address</li>
+                  </ul>
+                  <p>We collect this information to process your orders and provide you with the best possible shopping experience.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>How We Use Your Information</h2>
+                  <p>We use the information we collect to:</p>
+                  <ul>
+                      <li>Process and fulfill your orders</li>
+                      <li>Send order confirmations and shipping updates</li>
+                      <li>Respond to your inquiries and customer service requests</li>
+                      <li>Improve our website and services</li>
+                      <li>Send you marketing communications (if you have opted-in to receive them)</li>
+                  </ul>
+                  <p>Your personal information will not be sold, exchanged, or disclosed to any third party without your consent, except for the purpose of delivering the purchased product or service requested.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Payment Information</h2>
+                  <p>We do not store any payment information, such as credit card details. All payment transactions are processed through secure and trusted third-party payment gateways.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Security</h2>
+                  <p>Kapsy is committed to protecting the security of your personal information. We implement appropriate security measures to prevent unauthorized access, disclosure, or alteration of your information.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Cookies and Similar Technologies</h2>
+                  <p>Kapsy uses cookies and similar technologies to enhance your browsing experience and gather information about how our website is used. You can manage your cookie preferences through your browser settings.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Third-Party Links</h2>
+                  <p>Our website may contain links to third-party websites. Please note that we are not responsible for the privacy practices or content of these sites. We encourage you to review the privacy policies of these third-party websites before providing any personal information.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Changes to this Privacy Policy</h2>
+                  <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the updated policy on this page. It is your responsibility to review this page periodically to stay informed about how we handle your personal information.</p>
+              </section>
+
+              <section>
+                  <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Contact Us</h2>
+                  <p>If you have any questions or concerns about our Privacy Policy or how we handle your personal information, please don't hesitate to contact us at:</p>
+                  <Link href="mailto:kapsyshop@gmail.com" target='_blank' className='flex gap-2 items-center hover:text-red-500'>
+                    <FaEnvelopeSquare></FaEnvelopeSquare>
+                    <p>Email: kapsyshop@gmail.com</p>
+                  </Link>
+                  <Link href="https://wa.me/212655778278" target='_blank' className='flex gap-2 items-center hover:text-green-600'>
+                    <FaWhatsappSquare></FaWhatsappSquare>
+                    <p>WhatsApp: +212 6 55 77 88 99</p>
+                  </Link>
+              </section>
               </p>
           </div>
           </div>

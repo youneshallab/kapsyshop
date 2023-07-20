@@ -24,7 +24,7 @@ function About() {
               <Link href="/payment" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Payment Policies</Link>
             </div>
             <div className='col-start-7 col-end-12 '>
-              <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
+              <div className={'text-xl text-blue-900 '.concat(themeFont.className)}>
                 <section>
                     <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Passion for Timeless Leather Craftsmanship</h2>
                     <p>At Kapsy, we take pride in creating exquisite handcrafted leather accessories that exemplify elegance, style, and durability. From stunning bracelets to sophisticated wallets, each piece is meticulously designed and crafted in the heart of Morocco, using only the finest quality leather.</p>
@@ -69,7 +69,7 @@ function About() {
                     <h2 className={'text-2xl mb-1 mt-8 '.concat(themeFontBold.className)}>Contact Us</h2>
                     <p>We'd love to hear from you! For any inquiries or to place an order, please visit our "Contact Us" page, where you'll find our contact information and ways to get in touch with our dedicated team.</p>
                 </section>
-              </p>
+              </div>
           </div>
           </div>
         </Layout>

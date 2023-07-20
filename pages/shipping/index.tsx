@@ -24,7 +24,7 @@ function Shipping() {
               <Link href="/payment" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Payment Policies</Link>
             </div>
             <div className='col-start-7 col-end-12 '>
-              <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
+              <div className={'text-xl text-blue-900 '.concat(themeFont.className)}>
               <section>
                   <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Free Shipping Across Morocco</h2>
                   <p>We are delighted to offer free shipping for all orders within Morocco. Whether you're in the bustling city or a remote village, your order will be delivered to your doorstep at no additional cost.</p>
@@ -49,7 +49,7 @@ function Shipping() {
                   <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Kapsy Special: Gifting Made Easy</h2>
                   <p>Surprise your loved ones with our Kapsy Special shipping option. Your order will be elegantly packaged in a gift-like case, ready to be presented to that special someone. Make gifting effortless with our exclusive packaging.</p>
               </section>
-              </p>
+              </div>
           </div>
           </div>
         </Layout>

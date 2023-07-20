@@ -49,7 +49,7 @@ export const cartSlice = createSlice({
         ];
       } else {
         
-        const newQuantity = exists[0].quantity + 1;
+        const newQuantity = exists[0].quantity + action.payload.item.quantity;
         const newItem = {
           ...exists[0],
           ...{

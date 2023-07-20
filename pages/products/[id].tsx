@@ -25,8 +25,8 @@ function Page() {
     const item: Omit<ICartItemType, 'total'> = {
       id: String(product.id),
       name: product.productName,
-      quantity: 1,
-      price: 199,
+      quantity: counter.valueOf(),
+      price: product['price'],
       image: `https:${product.pictures['0'].fields.file.url}`,
     };
 

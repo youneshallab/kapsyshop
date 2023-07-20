@@ -27,7 +27,7 @@ function Privacy() {
             </div>
             </div>
             <div className='col-start-7 col-end-12 '>
-              <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
+              <div className={'text-xl text-blue-900 '.concat(themeFont.className)}>
               <section>
                   <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Payment on Delivery</h2>
                   <p>At Kapsy, we believe in convenience and trust. Therefore, our primary payment method is "Payment on Delivery." You can pay for your order in cash at the time of delivery.</p>
@@ -50,7 +50,7 @@ function Privacy() {
                     <p>WhatsApp: +212 6 55 77 88 99</p>
                   </Link>
               </section>
-              </p>
+              </div>
           </div>
           </div>
         </Layout>

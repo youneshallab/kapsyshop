@@ -24,7 +24,7 @@ function Terms() {
               <Link href="/payment" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Payment Policies</Link>
             </div>
             <div className='col-start-7 col-end-12 '>
-              <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
+              <div className={'text-xl text-blue-900 '.concat(themeFont.className)}>
               <section>
                   <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Introduction</h2>
                   <p>Welcome to Kapsy! By accessing or using our website, you agree to comply with these Terms of Use. If you do not agree with any part of these terms, please refrain from using our website.</p>
@@ -78,7 +78,7 @@ function Terms() {
                     <p>WhatsApp: +212 6 55 77 88 99</p>
                   </Link>
               </section>
-              </p>
+              </div>
           </div>
           </div>
         </Layout>

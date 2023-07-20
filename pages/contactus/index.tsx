@@ -24,7 +24,7 @@ function ContactUs() {
               <Link href="/payment" className={'text-[32px] h-12  font-bold text-blue-900  cursor-pointer '.concat(themeFontBold.className)}>Payment Policies</Link>
             </div>
             <div className='col-start-7 col-end-12 '>
-              <p className={'text-xl text-blue-900 '.concat(themeFont.className)}>
+              <div className={'text-xl text-blue-900 '.concat(themeFont.className)}>
               <section>
                   <h2  className={'text-2xl  mb-1  '.concat(themeFontBold.className)}>Kapsy’s Customer Care Team</h2>
                   <p>Kapsy’s Customer Care team would be happy to assist you with your online order. Contact us for product and buying questions, delivery inquiries, returns and exchanges. We are available every day, from 8 am to 6 pm.</p>
@@ -59,7 +59,7 @@ function ContactUs() {
                       </li>
                   </ul>
               </section>
-              </p>
+              </div>
           </div>
           </div>
         </Layout>

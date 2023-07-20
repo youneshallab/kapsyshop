@@ -6,6 +6,7 @@ import { Signika_Negative } from '@next/font/google';
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import Link from 'next/link';
 
 const themeFont = Signika_Negative({
   weight: ['600', '500', '700'],
@@ -119,16 +120,18 @@ function Cart() {
               <div>Total :</div>
               <div><span className='text-blue-500'>{total}</span> dhs</div>
             </div>
-            <button
-              className={
-                'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +
-                ' px-5 py-3 h-12 rounded-3xl w-full hover:bottom-[1px] relative '
-              }
-              
-            >
-              Go to Checkout
-              <AiOutlineArrowRight className="font-extrabold ml-2" />
-            </button>
+            <Link href="cart">
+              <button
+                className={
+                  'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +
+                  ' px-5 py-3 h-12 rounded-3xl w-full hover:bottom-[1px] relative '
+                }
+                
+                >
+                Go to Checkout
+                <AiOutlineArrowRight className="font-extrabold ml-2" />
+              </button>
+            </Link>
           </div>
         </div>
       </animated.div>

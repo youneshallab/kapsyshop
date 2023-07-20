@@ -6,11 +6,36 @@ import is1 from '../public/is1.jpg'
 import is2 from '../public/is2.jpg'
 import is3 from '../public/is3.jpg'
 import { Signika_Negative } from '@next/font/google';
+import db from "../utils/firebase";
+import { useState } from "react";
+import { addDoc, collection } from 'firebase/firestore';
 
 const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
 
 function Footer() {
+    const [email, setEmail] = useState<string>('')
+
+    const handleSubmitAsync = async (e:any) => {
+        e.preventDefault()
+        const collectionRef = collection(db, "newsletter")
+        const payload = {email: email}
+        console.log(payload)
+        try{
+            const newDoc = await addDoc(collectionRef, payload)
+            setEmail('')
+        }
+        catch(err){
+            console.error("writeToDB failed. reason :", err)
+        }
+    }
+
+    const handleEmailChange = (event:any) => {
+        setEmail(event.target.value);
+      };
+
+    
+      
     const properties = {
         prevArrow: <></>,
         nextArrow: <></>
@@ -54,19 +79,19 @@ function Footer() {
                     <ul className='mt-2 w-32 flex flex-col gap-2'>
                         <li>
                             <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
-                            href="\products" >
+                            href="products" >
                                 <p>Products</p>
                             </Link>
                         </li>
                         <li>
                             <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
-                            href="\contactus" >
+                            href="contactus" >
                                 <p>Contact Us</p>
                             </Link>
                         </li>
                         <li>
                             <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
-                            href="\about" >
+                            href="about" >
                                 <p>About</p>
                             </Link>
                         </li>
@@ -77,25 +102,25 @@ function Footer() {
                     <ul className='mt-2 w-32 flex flex-col gap-2'>
                         <li>
                             <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
-                            href="\privacy" >
+                            href="privacy" >
                                 <p>Privacy</p>
                             </Link>
                         </li>
                         <li>
                             <Link className={'text-white font-bold text-xl  '.concat(themeFontBold.className)} 
-                            href="\terms" >
+                            href="terms" >
                                 Terms of Use
                             </Link>
                         </li>
                         <li>
                             <Link className={'text-white font-bold text-xl leading-3 mt-3 '.concat(themeFontBold.className)} 
-                            href="\shipping" >
+                            href="shipping" >
                                 Shipping and Returns
                             </Link>
                         </li>
                         <li>
                             <Link className={'text-white font-bold text-xl leading-3 mt-3 '.concat(themeFontBold.className)} 
-                            href="\payment" >
+                            href="payment" >
                                 Payment Policies
                             </Link>
                         </li>
@@ -106,15 +131,16 @@ function Footer() {
             <div className='row-start-4 row-end-6 border-t-[1px] border-white px-10 flex justify-between items-end py-6'>
                 <div className={'text-white text-sm '.concat(themeFont.className)}>Made by <Link className='font-bold underline' href="">Minjara Studio</Link></div>
                 <div className='text-white w-80 mx-24'>
-                    <form>
+                    <form onSubmit={(e)=>handleSubmitAsync(e)}>
                         <label className={'flex flex-col '.concat(themeFont.className)}>
-                        <span className='mb-1'>Subscribe to Newsletter</span>
-                        <div className='flex border-b-2 border-white  '>
-                            <input style={{ backgroundColor: '#1E3A8A' }} className=" grow px-1 pb-[1px] outline-none 
-                             focus-within:bg-transparent focus:bg-slate-500 rounded text-white bg-blue-900" type="text" name="email" placeholder="Enter your email"></input>
-                            <input className='font-bold mx-1 cursor-pointer' type="submit" value="OK"></input>
-                        </div>
-                        <span className='mt-1 text-sm text-slate-400'>Get notified for new arrivals exclusive access and more !</span>
+                            <span className='mb-1'>Subscribe to Newsletter</span>
+                                <div className='flex border-b-2 border-white  '>
+                                    <input style={{ backgroundColor: '#1E3A8A' }} className=" grow px-1 pb-[1px] outline-none 
+                                    focus-within:bg-transparent focus:bg-slate-500 rounded text-white bg-blue-900" 
+                                    type="email" name="email" placeholder="Enter your email" value={email} onChange={(event)=>handleEmailChange(event)}></input>
+                                    <button className='font-bold mx-1 cursor-pointer' type="submit" >OK</button>
+                                </div>
+                            <span className='mt-1 text-sm text-slate-400'>Get notified for new arrivals exclusive access and more !</span>
                         </label>
                     </form>
                 </div>

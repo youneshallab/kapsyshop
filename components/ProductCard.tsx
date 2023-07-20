@@ -52,7 +52,7 @@ function ProductCard({ product }: any) {
       id: String(product.id),
       name: product.productName,
       quantity: 1,
-      price: 199,
+      price: product.price,
       image: `https:${product.pictures['0'].fields.file.url}`,
     };
     dispatch(AddToCart(item));

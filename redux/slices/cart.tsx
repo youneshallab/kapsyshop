@@ -29,8 +29,21 @@ export const AddToCart = createAsyncThunk(
   }
 );
 
+export const DeleteFromCart = createAsyncThunk(
+  'cart.DeleteFromCart',
+  async (item: Omit<ICartItemType, 'total'>, thunkAPI) => {
+    return { item };
+  }
+)
+
+export const EmptyCart = createAsyncThunk(
+  'cart.EmptyFromCart',
+  async () => {
+    return  {};
+  }
+)
+
 export const cartSlice = createSlice({
-  
   name: 'cart',
   initialState,
   reducers: {},
@@ -73,10 +86,24 @@ export const cartSlice = createSlice({
 
       localStorage.setItem('cart', JSON.stringify(state));
     }),
-      builder.addCase(initCart.fulfilled, (state, action) => {
-        state.items = action.payload.items;
-        state.total = action.payload.total;
-      });
+
+    // init cart
+    builder.addCase(initCart.fulfilled, (state, action) => {
+      state.items = action.payload.items;
+      state.total = action.payload.total;
+    });
+
+    // delete cart
+    builder.addCase(DeleteFromCart.fulfilled, (state, action) => {
+      state.items = [...state.items.filter(
+        (item: ICartItemType) => item.id != action.payload.item.id
+      )]
+    })
+
+    // empty cart
+    builder.addCase(EmptyCart.fulfilled, (state) => {
+      state.items = []
+    })
   },
   
 });

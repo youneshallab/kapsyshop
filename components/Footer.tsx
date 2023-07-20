@@ -34,7 +34,7 @@ function Footer() {
         console.log(payload)
         try{
             const newDoc = await addDoc(collectionRef, payload)
-            setIsOpen(true)
+            openModal()
             setEmail('')
         }
         catch(err){

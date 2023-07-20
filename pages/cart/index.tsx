@@ -8,7 +8,9 @@ import 'reactjs-popup/dist/index.css';
 import { addDoc, collection } from 'firebase/firestore';
 import db from "../../utils/firebase";
 import Modal from 'react-modal';
-import { FaWindowClose, FaCheck } from 'react-icons/fa'
+import { FaWindowClose, FaCheck } from 'react-icons/fa';
+import { EmptyCart, ICartItemType } from '@/redux/slices/cart';
+import { useAppDispatch } from '@/redux/hooks';
 
 const themeFont = Signika_Negative({
   weight: ['600', '500', '700'],
@@ -16,8 +18,7 @@ const themeFont = Signika_Negative({
 });
 
 function Cart() {
-
-
+  const dispatch = useAppDispatch();
   const ref = useRef(null)
   const cart = useAppSelector((store) => store.cart);
   const [footerVisible, setFooterVisible] = useState<boolean>(false)
@@ -36,6 +37,16 @@ function Cart() {
 
   function closeModal() {
     setIsOpen(false);
+  }
+
+  function closeModalWithEmptyCart() {
+    scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+    setIsOpen(false);
+    dispatch(EmptyCart());
   }
 
   useEffect(()=>{
@@ -116,37 +127,37 @@ function Cart() {
     catch(err){
         console.error("writeToDB failed. reason :", err)
     }
-}
-
+  }
+  
 
   return (
     <Layout>
         <div className={` ${themeFont.className.toString()} grid grid-cols-12 w-full h-max relative`}>
-          <div className=" relative  col-start-2 col-end-7 pt-40 flex flex-col gap-3 ">
-          {cart.items.map((product, i) => (
-              <div key={i} className="flex items-center ">
-                <div className='mr-5'>
-                  <Image
-                    className="rounded-md"
-                    src={product.image}
-                    alt="product_image"
-                    height={190}
-                    width={290}
-                    />
+          <div className=" relative min-h-screen col-start-2 col-end-7 pt-40 flex flex-col gap-3 ">
+            {cart.items.map((product, i) => (
+                <div key={i} className="flex items-center ">
+                  <div className='mr-5'>
+                    <Image
+                      className="rounded-md"
+                      src={product.image}
+                      alt="product_image"
+                      height={190}
+                      width={290}
+                      />
+                  </div>
+                  <div className='flex flex-col'>
+                    <div className=' mb-9 '>
+                      <button className='text-xs text-blue-500 underline'>Remove from basket</button>
+                    </div>
+                    <div className='mb-4 text-xl'>
+                      {product.name} x <span className='text-blue-500'>{product.quantity}</span>
+                    </div>
+                    <div className=" text-blue-900 ">
+                      Price: <span className='text-blue-500'>{product.total}</span> dhs
+                    </div>
+                  </div>
                 </div>
-                <div className='flex flex-col'>
-                  <div className=' mb-9 '>
-                    <button className='text-xs text-blue-500 underline'>Remove from basket</button>
-                  </div>
-                  <div className='mb-4 text-xl'>
-                    {product.name} x <span className='text-blue-500'>{product.quantity}</span>
-                  </div>
-                  <div className=" text-blue-900 ">
-                    Price: <span className='text-blue-500'>{product.total}</span> dhs
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
           <div className="pt-40 relative col-start-8 col-end-12 flex ">
             <div className={footerVisible ? 'self-end relative bottom-40 w-full':' fixed bottom-40 w-1/3'}>
@@ -221,11 +232,11 @@ function Cart() {
               <FaWindowClose onClick={closeModal} className='text-blue-900 hover:text-sky-700 cursor-pointer'></FaWindowClose>
             </div>
             <div className={`text-center ${themeFont.className.toString()} text-blue-900`}>Thank you for your order! We're almost there! One of our agents will be reaching out to you shortly to finalize the details.</div>
-            <button onClick={closeModal}
-              className={'z-30  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px] relative'+
-              '  py-2 px-6 self-center justify-self-end place-self-end mt-1 w-min rounded-3xl '+
+            <button onClick={closeModalWithEmptyCart}
+              className={'  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px] relative'+
+              '  py-2 px-6 self-center justify-self-end place-self-end mt-1 w-max rounded-3xl '+
               ' text-center cursor-pointer '.concat(themeFont.className)} >
-                Fermer
+                Empty Cart and Close
             </button>
           </div>
         </Modal>

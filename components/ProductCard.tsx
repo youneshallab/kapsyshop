@@ -4,9 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import { Signika_Negative } from '@next/font/google';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import Link from 'next/link';
-import { increment } from '@/redux/features/cartCounter';
 import { AddToCart, ICartItemType } from '@/redux/slices/cart';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppDispatch } from '@/redux/hooks';
 
 const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 

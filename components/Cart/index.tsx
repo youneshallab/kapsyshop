@@ -29,6 +29,9 @@ function Cart() {
     setTotal(totalVar)
   },[cart])
  
+  const handleOpenCart = () => {
+    ctx?.handleCartIsOpen(!ctx.isCartOpen);
+  };
 
   const handleOverlayClick = () => {
     if (!isClosing) {
@@ -126,7 +129,7 @@ function Cart() {
                   'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +
                   ' px-5 py-3 h-12 rounded-3xl w-full hover:bottom-[1px] relative '
                 }
-                
+                onClick={handleOpenCart}
                 >
                 Go to Checkout
                 <AiOutlineArrowRight className="font-extrabold ml-2" />

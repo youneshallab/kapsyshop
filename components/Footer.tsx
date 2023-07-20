@@ -9,12 +9,23 @@ import { Signika_Negative } from '@next/font/google';
 import db from "../utils/firebase";
 import { useState } from "react";
 import { addDoc, collection } from 'firebase/firestore';
+import Modal from 'react-modal';
+import { FaCheck, FaWindowClose } from 'react-icons/fa';
 
 const themeFontBold = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight : ['400'], subsets: ['latin'] });
 
 function Footer() {
     const [email, setEmail] = useState<string>('')
+    const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+
+    function openModal() {
+      setIsOpen(true);
+    }
+  
+    function closeModal() {
+      setIsOpen(false);
+    }
 
     const handleSubmitAsync = async (e:any) => {
         e.preventDefault()
@@ -23,6 +34,7 @@ function Footer() {
         console.log(payload)
         try{
             const newDoc = await addDoc(collectionRef, payload)
+            setIsOpen(true)
             setEmail('')
         }
         catch(err){
@@ -146,6 +158,51 @@ function Footer() {
                 </div>
             </div>
         </div>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={{
+            overlay: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.50)'
+            },
+            content: {
+              top: '50%',
+              left: '50%',
+              right: 'auto',
+              bottom: 'auto',
+              marginRight: '-50%',
+              transform: 'translate(-50%, -50%)',
+              height: '40%',
+              width: '40%',
+            }
+          }}
+          contentLabel="Example Modal"
+          className={""}
+        >
+          <div className='flex flex-col h-full justify-between'>
+            <div className={`flex flex-row text-lg justify-between ${themeFont.className.toString()} text-blue-900`}>
+              <div className='flex gap-2 items-center'>
+                <p>Subscription successful</p>
+                <FaCheck className=' text-green-700'></FaCheck>
+              </div>
+              <FaWindowClose onClick={closeModal} className='text-blue-900 hover:text-sky-700 cursor-pointer'></FaWindowClose>
+            </div>
+            <div className={`text-center ${themeFont.className.toString()} text-blue-900`}>
+            You're all set! Thanks for subscribing. Prepare to stay in the loop with our latest news and promotions.
+            </div>
+            <button onClick={closeModal}
+              className={'z-30  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px] relative'+
+              '  py-2 px-6 self-center justify-self-end place-self-end mt-1 w-min rounded-3xl '+
+              ' text-center cursor-pointer '.concat(themeFont.className)} >
+                Fermer
+            </button>
+          </div>
+        </Modal>
     </div>
   )
 }

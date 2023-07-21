@@ -225,7 +225,7 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div ref={ref} ></div>
+        <div ref={ref} className='absolute h-4 w-4'></div>
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}

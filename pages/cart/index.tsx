@@ -9,8 +9,10 @@ import { addDoc, collection } from 'firebase/firestore';
 import db from "../../utils/firebase";
 import Modal from 'react-modal';
 import { FaWindowClose, FaCheck } from 'react-icons/fa';
+import { AiOutlineArrowRight } from 'react-icons/ai'
 import { EmptyCart, DeleteFromCart } from '@/redux/slices/cart';
 import { useAppDispatch } from '@/redux/hooks';
+import Link from 'next/link';
 
 const themeFont = Signika_Negative({
   weight: ['600', '500', '700'],
@@ -94,7 +96,7 @@ function Cart() {
         });
       },
       {
-        threshold: 0.2, // Customize the threshold value as needed
+        threshold: 0.5, // Customize the threshold value as needed
       }
     );
 
@@ -136,7 +138,8 @@ function Cart() {
     <Layout>
         <div className={` ${themeFont.className.toString()} grid grid-cols-12 w-full h-max relative`}>
           <div className=" relative min-h-screen col-start-2 col-end-7 pt-40 flex flex-col gap-3 ">
-            {cart.items.map((product, i) => (
+            {cart.items.length > 0 ?
+            cart.items.map((product, i) => (
                 <div key={i} className="flex items-center ">
                   <div className='mr-5'>
                     <Image
@@ -159,7 +162,23 @@ function Cart() {
                     </div>
                   </div>
                 </div>
-              ))}
+              )):
+              <div className='flex flex-col items-center justify-center pt-20'>
+                <p className={`${themeFont.className.toString()} text-lg text-blue-900 mb-8`}>Your Cart is empty</p>
+                <Link href="products">
+                  <button
+                    className={
+                      'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +
+                      ' px-5 py-3 h-12 rounded-3xl hover:bottom-[1px] relative '
+                    }
+                    
+                    >
+                    See More Products
+                    <AiOutlineArrowRight className="font-extrabold ml-2" />
+                  </button>
+                </Link>
+              </div>
+              }
           </div>
           <div className="pt-40 relative col-start-8 col-end-12 flex ">
             <div className={footerVisible ? 'self-end relative bottom-40 w-full':' fixed bottom-40 w-1/3'}>
@@ -188,12 +207,20 @@ function Cart() {
                   <div>Total :</div>
                   <div><span className='text-blue-500'>{total}</span> dhs</div>
                 </div>
+                {cart.items.length > 0 ?
                 <button type="submit" 
-                className={'z-30  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px] relative'+
-                '  py-2 mt-1 w-full rounded-3xl '+
-                ' text-center cursor-pointer '.concat(themeFont.className)} >
+                  className={'z-30  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px] relative'+
+                  '  py-2 mt-1 w-full rounded-3xl '.concat(themeFont.className) +
+                  ' text-center cursor-pointer '} >
+                  Valider la commande
+               </button>:
+                <button type="submit" 
+                  className={'z-30  bg-slate-400 text-xl text-white relative'+
+                  '  py-2 mt-1 w-full rounded-3xl '.concat(themeFont.className) +
+                  ' text-center '} disabled>
                   Valider la commande
                 </button>
+                }
               </form>
             </div>
           </div>

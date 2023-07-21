@@ -141,7 +141,7 @@ function Footer() {
             </div>
 
             <div className='row-start-4 row-end-6 border-t-[1px] border-white px-10 flex justify-between items-end py-6'>
-                <div className={'text-white text-sm '.concat(themeFont.className)}>Made by <Link className='font-bold underline' href="">Minjara Studio</Link></div>
+                <div className={'text-white text-sm '.concat(themeFont.className)}>Made by <Link className='font-bold underline' href="https://github.com/youneshallab" target='_blank'>Younes Hallab</Link></div>
                 <div className='text-white w-80 mx-24'>
                     <form onSubmit={(e)=>handleSubmitAsync(e)}>
                         <label className={'flex flex-col '.concat(themeFont.className)}>

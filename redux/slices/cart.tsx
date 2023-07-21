@@ -36,6 +36,20 @@ export const DeleteFromCart = createAsyncThunk(
   }
 )
 
+export const IncreaseQuantity = createAsyncThunk(
+  'cart.IncreaseQuantity',
+  async (id: string, thunkAPI) => {
+    return { id };
+  }
+)
+
+export const DecreaseQuantity= createAsyncThunk(
+  'cart.DecreaseQuantity',
+  async (id: string, thunkAPI) => {
+    return { id };
+  }
+)
+
 export const EmptyCart = createAsyncThunk(
   'cart.EmptyFromCart',
   async () => {
@@ -104,8 +118,37 @@ export const cartSlice = createSlice({
     builder.addCase(EmptyCart.fulfilled, (state) => {
       state.items = []
     })
+    
+    // increase quantity by one
+    builder.addCase(IncreaseQuantity.fulfilled, (state, action) => {
+      state.items.map(
+        (item: ICartItemType) => {
+          if (item.id === action.payload.id){
+            item.quantity = item.quantity + 1
+            item.total = item.price * item.quantity
+          }
+        }
+      )
+    })  
+
+    // decrease quantity by one
+    builder.addCase(DecreaseQuantity.fulfilled, (state, action) => {
+      state.items.map(
+        (item: ICartItemType) => {
+          if (item.id === action.payload.id){
+            if(item.quantity > 1){
+              item.quantity = item.quantity - 1
+              item.total = item.price * item.quantity
+            }else{
+              state.items = [...state.items.filter(
+                (item: ICartItemType) => item.id != action.payload.id
+              )]
+            }
+          }
+        }
+      )
+    }) 
   },
-  
 });
 
 export const cartReducer = cartSlice.reducer;

@@ -7,7 +7,7 @@ import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import Link from 'next/link';
-import {  DeleteFromCart } from '@/redux/slices/cart';
+import {  DeleteFromCart, IncreaseQuantity, DecreaseQuantity } from '@/redux/slices/cart';
 import { useAppDispatch } from '@/redux/hooks';
 
 const themeFont = Signika_Negative({
@@ -23,10 +23,20 @@ function Cart() {
   const cart = useAppSelector((store) => store.cart);
   const [total, setTotal] = useState<number>(0)
   const x = useSpringValue(-700);
+  const [cartLink, setCartLink] = useState<string>('')
 
   const deleteItemsFromCart = (id:any) => {
     dispatch(DeleteFromCart(id));
   };
+
+  const IncreaseItemQuantity = (id:any) => {
+    dispatch(IncreaseQuantity(id));
+  };
+
+  const DecreaseItemQuantity = (id:any) => {
+    dispatch(DecreaseQuantity(id));
+  };
+
 
   useEffect(()=>{
     var totalVar:number = 0
@@ -37,9 +47,9 @@ function Cart() {
   },[cart])
  
   const handleOpenCart = () => {
-    ctx?.handleCartIsOpen(!ctx.isCartOpen);
+    ctx?.handleCartIsOpen(false)
   };
-
+  
   const handleOverlayClick = () => {
     if (!isClosing) {
       setIsClosing(true);
@@ -47,14 +57,14 @@ function Cart() {
         from: 0,
         to: -700,
       })
-        .then(() =>
-          opacity.start({
-            from: 1,
-            to: 0,
-          })
-        )
-        .finally(() => {
-          ctx?.handleCartIsOpen(false);
+      .then(() =>
+      opacity.start({
+        from: 1,
+        to: 0,
+      })
+      )
+      .finally(() => {
+          ctx?.handleCartIsOpen(false)
           setIsClosing(false);
         });
     }
@@ -115,12 +125,31 @@ function Cart() {
                   <div className=' mb-9 '>
                     <button className='text-xs text-blue-500 underline' onClick={()=>deleteItemsFromCart(product.id)}>Remove from basket</button>
                   </div>
-                  <div className='mb-4 text-xl'>
-                    {product.name} x <span className='text-blue-500'>{product.quantity}</span>
+                  <div className='mb-1 text-xl'>
+                    {product.name}
                   </div>
-                  <div className=" text-blue-900 ">
+                  <div className=" text-blue-900 mb-5">
                     Price: <span className='text-blue-500'>{product.total}</span> dhs
                   </div>
+                  <div
+                      className="flex flex-row items-center justify-around h-8 mr-4 w-20
+                          border-[1px] border-gray-400  rounded-3xl hover:border-blue-900
+                          px-2 "
+                    >
+                      <button
+                        onClick={()=>DecreaseItemQuantity(product.id)}
+                        className=" px-1 rounded-3xl text-gray-400 hover:text-blue-900"
+                      >
+                        -
+                      </button>
+                    <div className=" text-center mx-1">{product.quantity}</div>
+                      <button
+                        onClick={()=>IncreaseItemQuantity(product.id)}
+                        className=" px-1 rounded-3xl text-gray-400 hover:text-blue-900"
+                      >
+                        +
+                      </button>
+                    </div>
                 </div>
               </div>
             )):
@@ -133,7 +162,7 @@ function Cart() {
               <div><span className='text-blue-500'>{total}</span> dhs</div>
             </div>
             { cart.items.length> 0 ? 
-            <Link href="cart">
+            <Link href='\cart' >
               <button
                 className={
                   'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +
@@ -145,7 +174,7 @@ function Cart() {
                 <AiOutlineArrowRight className="font-extrabold ml-2" />
               </button>
             </Link>:
-          <Link href="products">
+          <Link href="\products">
             <button
               className={
                 'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +

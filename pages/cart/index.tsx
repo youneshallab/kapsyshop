@@ -10,9 +10,11 @@ import db from "../../utils/firebase";
 import Modal from 'react-modal';
 import { FaWindowClose, FaCheck } from 'react-icons/fa';
 import { AiOutlineArrowRight } from 'react-icons/ai'
-import { EmptyCart, DeleteFromCart } from '@/redux/slices/cart';
+import { EmptyCart, DeleteFromCart, IncreaseQuantity, DecreaseQuantity } from '@/redux/slices/cart';
 import { useAppDispatch } from '@/redux/hooks';
 import Link from 'next/link';
+import { UseAppContext } from '@/context/appContext';
+
 
 const themeFont = Signika_Negative({
   weight: ['600', '500', '700'],
@@ -25,7 +27,7 @@ function Cart() {
   const cart = useAppSelector((store) => store.cart);
   const [footerVisible, setFooterVisible] = useState<boolean>(false)
   const [total, setTotal] = useState<number>(0)
-
+  const ctx = UseAppContext();
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
   const [phone, setPhone] = useState<string>('')
@@ -36,6 +38,15 @@ function Cart() {
   const deleteItemsFromCart = (id:any) => {
     dispatch(DeleteFromCart(id));
   };
+
+  const IncreaseItemQuantity = (id:any) => {
+    dispatch(IncreaseQuantity(id));
+  };
+
+  const DecreaseItemQuantity = (id:any) => {
+    dispatch(DecreaseQuantity(id));
+  };
+
   function openModal() {
     setIsOpen(true);
   }
@@ -96,7 +107,7 @@ function Cart() {
         });
       },
       {
-        threshold: 0.5, // Customize the threshold value as needed
+        threshold: 0, // Customize the threshold value as needed
       }
     );
 
@@ -154,12 +165,32 @@ function Cart() {
                     <div className=' mb-9 '>
                       <button className='text-xs text-blue-500 underline' onClick={()=>deleteItemsFromCart(product.id)}>Remove from basket</button>
                     </div>
-                    <div className='mb-4 text-xl'>
-                      {product.name} x <span className='text-blue-500'>{product.quantity}</span>
+                    <div className='mb-1 text-xl'>
+                      {product.name}
                     </div>
-                    <div className=" text-blue-900 ">
+                    <div className=" text-blue-900 mb-5">
                       Price: <span className='text-blue-500'>{product.total}</span> dhs
                     </div>
+                    <div
+                      className="flex flex-row items-center justify-around h-8 mr-4 w-20
+                          border-[1px] border-gray-400  rounded-3xl hover:border-blue-900
+                          px-2 "
+                    >
+                      <button
+                        onClick={()=>DecreaseItemQuantity(product.id)}
+                        className=" px-1 rounded-3xl text-gray-400 hover:text-blue-900"
+                      >
+                        -
+                      </button>
+                    <div className=" text-center mx-1">{product.quantity}</div>
+                      <button
+                        onClick={()=>IncreaseItemQuantity(product.id)}
+                        className=" px-1 rounded-3xl text-gray-400 hover:text-blue-900"
+                      >
+                        +
+                      </button>
+                    </div>
+                    
                   </div>
                 </div>
               )):
@@ -181,7 +212,7 @@ function Cart() {
               }
           </div>
           <div className="pt-40 relative col-start-8 col-end-12 flex ">
-            <div className={footerVisible ? 'self-end relative bottom-40 w-full':' fixed bottom-40 w-1/3'}>
+            <div className={footerVisible ? 'self-end relative scroll-smooth bottom-40 w-full':'scroll-smooth  fixed bottom-40 w-1/3'}>
               <form onSubmit={(e)=>handleSubmit(e)} className='p-5 flex flex-col border-2 border-blue-900 rounded'>
                 <label className=' p-2 flex flex-col'>
                 <p className='font-semibold	' onClick={()=>openModal()}>Nom:</p>
@@ -225,7 +256,7 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div ref={ref} className='absolute h-4 w-4'></div>
+        <div ref={ref} className='absolute h-screen bg-transparent w-4'></div>
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}

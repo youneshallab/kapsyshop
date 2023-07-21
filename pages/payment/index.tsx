@@ -30,7 +30,7 @@ function Privacy() {
               <div className={'text-xl text-blue-900 '.concat(themeFont.className)}>
               <section>
                   <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Payment on Delivery</h2>
-                  <p>At Kapsy, we believe in convenience and trust. Therefore, our primary payment method is "Payment on Delivery." You can pay for your order in cash at the time of delivery.</p>
+                  <p>At Kapsy, we believe in convenience and trust. Therefore, our primary payment method is &quot;Payment on Delivery.&quot; You can pay for your order in cash at the time of delivery.</p>
               </section>
 
               <section>

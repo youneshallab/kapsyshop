@@ -58,7 +58,7 @@ function Terms() {
 
               <section>
                   <h2  className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Indemnification</h2>
-                  <p>You agree to indemnify and hold harmless Kapsy and its affiliates, officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, or expenses (including attorneys' fees) arising out of your use of the website or any violation of these Terms of Use.</p>
+                  <p>You agree to indemnify and hold harmless Kapsy and its affiliates, officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, or expenses (including attorneys&apos; fees) arising out of your use of the website or any violation of these Terms of Use.</p>
               </section>
 
               <section>
@@ -68,7 +68,7 @@ function Terms() {
 
               <section>
                   <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Contact Us</h2>
-                  <p>If you have any questions or concerns regarding these Terms of Use, please don't hesitate to contact us at:</p>
+                  <p>If you have any questions or concerns regarding these Terms of Use, please don&apos;t hesitate to contact us at:</p>
                   <Link href="mailto:kapsyshop@gmail.com" target='_blank' className='flex gap-2 items-center hover:text-red-500'>
                     <FaEnvelopeSquare></FaEnvelopeSquare>
                     <p>Email: kapsyshop@gmail.com</p>

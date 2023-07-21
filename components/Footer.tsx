@@ -193,7 +193,7 @@ function Footer() {
               <FaWindowClose onClick={closeModal} className='text-blue-900 hover:text-sky-700 cursor-pointer'></FaWindowClose>
             </div>
             <div className={`text-center ${themeFont.className.toString()} text-blue-900`}>
-            You're all set! Thanks for subscribing. Prepare to stay in the loop with our latest news and promotions.
+            You&apos;re all set! Thanks for subscribing. Prepare to stay in the loop with our latest news and promotions.
             </div>
             <button onClick={closeModal}
               className={'z-30  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px] relative'+

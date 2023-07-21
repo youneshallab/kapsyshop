@@ -291,7 +291,7 @@ function Cart() {
               </div>
               <FaWindowClose onClick={closeModal} className='text-blue-900 hover:text-sky-700 cursor-pointer'></FaWindowClose>
             </div>
-            <div className={`text-center ${themeFont.className.toString()} text-blue-900`}>Thank you for your order! We're almost there! One of our agents will be reaching out to you shortly to finalize the details.</div>
+            <div className={`text-center ${themeFont.className.toString()} text-blue-900`}>Thank you for your order! We&apos;re almost there! One of our agents will be reaching out to you shortly to finalize the details.</div>
             <button onClick={closeModalWithEmptyCart}
               className={'  bg-blue-900 text-xl text-white hover:drop-shadow-xl hover:bottom-[1px] relative'+
               '  py-2 px-6 self-center justify-self-end place-self-end mt-1 w-max rounded-3xl '+

@@ -27,7 +27,7 @@ function Shipping() {
               <div className={'text-xl text-blue-900 '.concat(themeFont.className)}>
               <section>
                   <h2 className={'text-2xl  mb-1 '.concat(themeFontBold.className)}>Free Shipping Across Morocco</h2>
-                  <p>We are delighted to offer free shipping for all orders within Morocco. Whether you're in the bustling city or a remote village, your order will be delivered to your doorstep at no additional cost.</p>
+                  <p>We are delighted to offer free shipping for all orders within Morocco. Whether you&apos;re in the bustling city or a remote village, your order will be delivered to your doorstep at no additional cost.</p>
               </section>
 
               <section>

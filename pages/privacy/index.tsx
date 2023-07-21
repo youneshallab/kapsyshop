@@ -83,7 +83,7 @@ function Privacy() {
 
               <section>
                   <h2 className={'text-2xl  mb-1 mt-8 '.concat(themeFontBold.className)}>Contact Us</h2>
-                  <p>If you have any questions or concerns about our Privacy Policy or how we handle your personal information, please don't hesitate to contact us at:</p>
+                  <p>If you have any questions or concerns about our Privacy Policy or how we handle your personal information, please don&apos;t hesitate to contact us at:</p>
                   <Link href="mailto:kapsyshop@gmail.com" target='_blank' className='flex gap-2 items-center hover:text-red-500'>
                     <FaEnvelopeSquare></FaEnvelopeSquare>
                     <p>Email: kapsyshop@gmail.com</p>

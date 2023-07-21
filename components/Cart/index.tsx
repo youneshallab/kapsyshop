@@ -7,6 +7,8 @@ import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import Link from 'next/link';
+import {  DeleteFromCart } from '@/redux/slices/cart';
+import { useAppDispatch } from '@/redux/hooks';
 
 const themeFont = Signika_Negative({
   weight: ['600', '500', '700'],
@@ -14,12 +16,17 @@ const themeFont = Signika_Negative({
 });
 
 function Cart() {
+  const dispatch = useAppDispatch();
   const ctx = UseAppContext();
   const opacity = useSpringValue(0);
   const [isClosing, setIsClosing] = useState<boolean>(false);
   const cart = useAppSelector((store) => store.cart);
   const [total, setTotal] = useState<number>(0)
   const x = useSpringValue(-700);
+
+  const deleteItemsFromCart = (id:any) => {
+    dispatch(DeleteFromCart(id));
+  };
 
   useEffect(()=>{
     var totalVar:number = 0
@@ -106,7 +113,7 @@ function Cart() {
                 </div>
                 <div className='flex flex-col'>
                   <div className=' mb-9 '>
-                    <button className='text-xs text-blue-500 underline'>Remove from basket</button>
+                    <button className='text-xs text-blue-500 underline' onClick={()=>deleteItemsFromCart(product.id)}>Remove from basket</button>
                   </div>
                   <div className='mb-4 text-xl'>
                     {product.name} x <span className='text-blue-500'>{product.quantity}</span>

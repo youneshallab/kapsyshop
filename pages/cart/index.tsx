@@ -9,7 +9,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import db from "../../utils/firebase";
 import Modal from 'react-modal';
 import { FaWindowClose, FaCheck } from 'react-icons/fa';
-import { EmptyCart, ICartItemType } from '@/redux/slices/cart';
+import { EmptyCart, DeleteFromCart } from '@/redux/slices/cart';
 import { useAppDispatch } from '@/redux/hooks';
 
 const themeFont = Signika_Negative({
@@ -31,6 +31,9 @@ function Cart() {
   const [order, setOrder] = useState<string>('')
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
 
+  const deleteItemsFromCart = (id:any) => {
+    dispatch(DeleteFromCart(id));
+  };
   function openModal() {
     setIsOpen(true);
   }
@@ -53,7 +56,6 @@ function Cart() {
     setOrder(JSON.stringify(cart.items))
   },[cart])
 
-  console.log(order)
   const handleFirstNameChage = (e:any) => {
     setFirstName(e.target.value)
   }
@@ -147,7 +149,7 @@ function Cart() {
                   </div>
                   <div className='flex flex-col'>
                     <div className=' mb-9 '>
-                      <button className='text-xs text-blue-500 underline'>Remove from basket</button>
+                      <button className='text-xs text-blue-500 underline' onClick={()=>deleteItemsFromCart(product.id)}>Remove from basket</button>
                     </div>
                     <div className='mb-4 text-xl'>
                       {product.name} x <span className='text-blue-500'>{product.quantity}</span>

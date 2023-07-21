@@ -31,8 +31,8 @@ export const AddToCart = createAsyncThunk(
 
 export const DeleteFromCart = createAsyncThunk(
   'cart.DeleteFromCart',
-  async (item: Omit<ICartItemType, 'total'>, thunkAPI) => {
-    return { item };
+  async (id: string, thunkAPI) => {
+    return { id };
   }
 )
 
@@ -96,7 +96,7 @@ export const cartSlice = createSlice({
     // delete cart
     builder.addCase(DeleteFromCart.fulfilled, (state, action) => {
       state.items = [...state.items.filter(
-        (item: ICartItemType) => item.id != action.payload.item.id
+        (item: ICartItemType) => item.id != action.payload.id
       )]
     })
 

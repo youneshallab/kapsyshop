@@ -107,7 +107,7 @@ function Cart() {
           <p className='text-sm'>{`(${cart.items.length})`}</p>
         </div>
         <div className='grow h-4 grid grid-rows-4  '>
-          <div className=" flex flex-col gap-4 overflow-y-scroll row-start-1 row-end-4 ml-10">
+          <div className=" flex flex-col gap-4 overflow-y-scroll row-start-1 row-end-4 ml-10 pb-4">
             {cart.items.length> 0 ? cart.items.map((product, i) => (
               <div key={i} className="flex items-center ">
                 <div className='mr-5'>
@@ -160,7 +160,7 @@ function Cart() {
               <div><span className='text-blue-500'>{total}</span> dhs</div>
             </div>
             { cart.items.length> 0 ? 
-            <Link href='\cart' >
+            <Link href='/cart' >
               <button
                 className={
                   'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +
@@ -172,7 +172,7 @@ function Cart() {
                 <AiOutlineArrowRight className="font-extrabold ml-2" />
               </button>
             </Link>:
-          <Link href="\products">
+          <Link href="/products">
             <button
               className={
                 'z-30 flex gap-4 items-center justify-center  bg-blue-900 text-xl text-white hover:drop-shadow-xl' +

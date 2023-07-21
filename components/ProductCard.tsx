@@ -6,6 +6,8 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import Link from 'next/link';
 import { AddToCart, ICartItemType } from '@/redux/slices/cart';
 import { useAppDispatch } from '@/redux/hooks';
+import { UseAppContext } from '@/context/appContext';
+
 
 const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 
@@ -14,6 +16,7 @@ function ProductCard({ product }: any) {
   const secondaryColorRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useAppDispatch();
+  const ctx = UseAppContext();
 
   useEffect(() => {
     const primaryColorViewClass = `colorview${
@@ -44,7 +47,7 @@ function ProductCard({ product }: any) {
         }`;
       }
     }
-  }, [isHovered, product]);
+  }, [isHovered, product, ctx?.isCartOpen]);
 
   const addItemsToCart = (product: any) => {
     const item: Omit<ICartItemType, 'total'> = {
@@ -55,6 +58,7 @@ function ProductCard({ product }: any) {
       image: `https:${product.pictures['0'].fields.file.url}`,
     };
     dispatch(AddToCart(item));
+    ctx?.handleCartIsOpen(!ctx.isCartOpen);
   };
 
   const mouseOverHandle = () => {

@@ -8,11 +8,12 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import Layout from '@/components/Layout';
 import { AddToCart, ICartItemType } from '@/redux/slices/cart';
 import { useAppDispatch } from '@/redux/hooks';
+import { UseAppContext } from '@/context/appContext';
 
 const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 function Page() {
   const dispatch = useAppDispatch();
-
+  const ctx = UseAppContext();
   const router = useRouter();
   const { id } = router.query;
   const [product, setProduct] = useState<any>();
@@ -29,8 +30,8 @@ function Page() {
       price: product['price'],
       image: `https:${product.pictures['0'].fields.file.url}`,
     };
-
     dispatch(AddToCart(item));
+    ctx?.handleCartIsOpen(!ctx.isCartOpen);
   };
 
   const incrementCounter = () => {

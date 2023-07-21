@@ -3,8 +3,7 @@ import { BsCart4 } from 'react-icons/bs';
 import { Teko, Signika_Negative } from '@next/font/google';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { RootState } from '@/redux/store';
-import { useSelector, useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import { assignValue } from '@/redux/features/cartCounter';
 import { UseAppContext } from '@/context/appContext';
 import { useAppSelector } from '@/redux/hooks';
@@ -13,10 +12,8 @@ const logoFont = Teko({ weight: ['600'], subsets: ['latin'] });
 const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 
 function Header({ color }: any) {
-  const cartCount = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
   const [headerColor, setHeaderColor] = useState(' text-blue-900 ');
-  var cartItemsCount = 0;
   const ctx = UseAppContext();
   const cart = useAppSelector((store) => store.cart);
 
@@ -26,7 +23,7 @@ function Header({ color }: any) {
 
   useEffect(() => {
     if (color === 'white') {
-      setHeaderColor(' text-gray-200 ');
+      setHeaderColor(' text-cyan-600 ');
     }
   }, [color]);
 

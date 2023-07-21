@@ -23,7 +23,6 @@ function Cart() {
   const cart = useAppSelector((store) => store.cart);
   const [total, setTotal] = useState<number>(0)
   const x = useSpringValue(-700);
-  const [cartLink, setCartLink] = useState<string>('')
 
   const deleteItemsFromCart = (id:any) => {
     dispatch(DeleteFromCart(id));
@@ -36,7 +35,6 @@ function Cart() {
   const DecreaseItemQuantity = (id:any) => {
     dispatch(DecreaseQuantity(id));
   };
-
 
   useEffect(()=>{
     var totalVar:number = 0

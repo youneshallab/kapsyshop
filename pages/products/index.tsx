@@ -11,6 +11,7 @@ const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 
 function Products() {
   const [data, setData] = useState<[]>([]);
+  const [productFilter, setProductFilter] = useState<string>('all')
 
   useEffect(() => {
     let isFetched: boolean = true;
@@ -37,8 +38,10 @@ function Products() {
   }, []);
 
   const ProductCards = (): JSX.Element => {
-    const productCards = data.map((product: any) => {
-      return <ProductCard key={product.id} product={product} />;
+      const  productCards = data.map((product: any) => {
+      if(product['category'] === productFilter || productFilter === 'all'){
+        return <ProductCard key={product.id} product={product} />;
+      }
     });
     return (
       <div className="grid grid-cols-1 sm:grid-cols-3 ">{productCards}</div>
@@ -93,28 +96,28 @@ function Products() {
               <div className=" flex justify-between w-72">
                 <button
                   className={
-                    ' bg-white text-blue-900 rounded-xl h-8 px-2 border-[1px] border-blue-200' +
-                    ' hover:border-blue-900 focus:bg-blue-900 focus:text-white  ' +
-                    'focus:border-blue-900 '.concat(themeFont.className)
+                    ' text-blue-900 rounded-xl h-8 px-2 border-[1px] border-blue-200 '.concat(themeFont.className) +
+                    ' hover:border-blue-900 '.concat(productFilter === 'all' ? 'border-blue-900 text-white bg-blue-900 ' :'')
                   }
+                  onClick={()=>setProductFilter('all')}
                 >
                   Tout
                 </button>
                 <button
                   className={
-                    ' bg-white text-blue-900 rounded-xl h-8 px-2 border-[1px] border-blue-200' +
-                    ' hover:border-blue-900 focus:bg-blue-900 focus:text-white ' +
-                    'focus:border-blue-900 '.concat(themeFont.className)
+                    ' text-blue-900 rounded-xl h-8 px-2 border-[1px] border-blue-200 '.concat(themeFont.className) +
+                    ' hover:border-blue-900 '.concat(productFilter === 'Bracelet' ? 'border-blue-900 text-white bg-blue-900 ':'')
                   }
+                  onClick={()=>setProductFilter('Bracelet')}
                 >
                   Bracelets
                 </button>
                 <button
                   className={
-                    ' bg-white text-blue-900 rounded-xl h-8 px-2 border-[1px] border-blue-200' +
-                    ' hover:border-blue-900 focus:bg-blue-900 focus:text-white ' +
-                    'focus:border-blue-900 '.concat(themeFont.className)
+                    '  text-blue-900 rounded-xl h-8 px-2 border-[1px] border-blue-200 '.concat(themeFont.className) +
+                    ' hover:border-blue-900 '.concat(productFilter === 'Wallet' ? 'border-blue-900 text-white bg-blue-900 ':'')
                   }
+                  onClick={()=>setProductFilter('Wallet')}
                 >
                   Portes-Feuilles
                 </button>

@@ -34,6 +34,7 @@ function Cart() {
   const [address, setAddress] = useState<string>('')
   const [order, setOrder] = useState<string>('')
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const date:Date = new Date()
 
   const deleteItemsFromCart = (id:any) => {
     dispatch(DeleteFromCart(id));
@@ -128,7 +129,8 @@ function Cart() {
   const handleSubmit = async (e:any) => {
     e.preventDefault()
     const collectionRef = collection(db, "orders")
-    const payload = {firstName: firstName, lastName: lastName, phone: phone, address: address, order: order}
+    const payload = {firstName: firstName, lastName: lastName, phone: phone, address: address, order: order, date: date, 
+    status: 'new'} // status can be 'new' or 'pending' or 'delivered'
     console.log(payload)
     try{
         const newDoc = await addDoc(collectionRef, payload)

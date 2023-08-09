@@ -10,6 +10,7 @@ import Layout from '@/components/Layout';
 const themeFont = Signika_Negative({ weight: ['600'], subsets: ['latin'] });
 
 export default function Home() {
+  console.log('yabadbadb',process.env.NEXT_PUBLIC_CONTENTFUL_TOKEN)
   return (
     <>
       <Head>
